@@ -1,0 +1,41 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+.ruff_cache/
+
+# Editors
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Credentials & Downloads
+auth.json
+downloaded_pdfs/
+
+# Log Files
+*.log
+.gitignore
+log/
+
+# OS Metadata
+.DS_Store
+
+# Data
+*data/
+data*/
+
+# Patreon session + downloaded content -- never commit
+.patreon-profile/
+patreon_minis/

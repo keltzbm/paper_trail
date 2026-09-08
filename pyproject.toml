@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "paper-trail"
+version = "0.1.0"
+description = "Automated research paper downloader and metadata organizer"
+authors = [{ name = "Brandon Keltz", email = "keltzbm@icloud.com" }]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "playwright>=1.61.0",
+    "requests>=2.34.2",
+    "pre-commit>=4.6.1",
+    "rich>=15.0.0",
+    "pypdf>=4.0.0",
+    "pdf2doi>=1.5.0",
+    "tqdm>=4.69.1",
+    "pytesseract>=0.3.13",
+    "pdf2image>=1.17.0",
+    "ocrmac>=1.0.1",
+    "arxiv>=1.4.8",
+]
+
+# Expose CLI commands
+[project.scripts]
+paper-trail = "paper_trail.main:main"
+organize-papers = "paper_trail.organizer:cli_main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/paper_trail"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+extend-select = [
+    "F", "E", "W", "I", "UP", "B", "D",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort]
+known-first-party = ["paper_trail"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+]
